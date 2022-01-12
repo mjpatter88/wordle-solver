@@ -4,7 +4,8 @@
   "description": "A puppeteer based bot that solves wordle in the browser.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "app": "tsc && node dist/app.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/mjpatter88/wordle-solver#readme",
   "dependencies": {
+    "puppeteer": "^13.0.1",
     "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^5.4.4"
   }
 }
