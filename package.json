@@ -1,0 +1,22 @@
+{
+  "name": "wordle-solver",
+  "version": "1.0.0",
+  "description": "A puppeteer based bot that solves wordle in the browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjpatter88/wordle-solver.git"
+  },
+  "author": "mjpatter88",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjpatter88/wordle-solver/issues"
+  },
+  "homepage": "https://github.com/mjpatter88/wordle-solver#readme",
+  "dependencies": {
+    "typescript": "^4.5.4"
+  }
+}
