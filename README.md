@@ -19,3 +19,6 @@ Once the possible solution list has been narrowed down to 1, or there is only 1 
 ## Offline Processing
 In order to educate the initial letter guessing phase, I did some quick offline processing to understand the frequency of letter usage in the dictionary.
 From most frequent to least: `e, a, r, o, t, l, i, s, n, c, u, y, d, h, p, m, g, b, f, k, w, v, z, x, q, j`
+
+Using this ordering, I think generated the list of 6 "best" words to guess in order to determine letter existence:
+`alert, scion, dumpy, bough, flack, vowel`
