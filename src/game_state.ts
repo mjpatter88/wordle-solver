@@ -1,7 +1,18 @@
 export class GameState {
     private guesses: Guess[] = [];
+
     public addGuess(guess: string, result: LetterState[]) {
         this.guesses.push(new Guess(guess, result));
+    }
+
+    public isGameFinished(): boolean {
+        if (this.guesses.length == 0) {
+            return false;
+        }
+        if (this.guesses.length == 6) {
+            return true;
+        }
+        return this.guesses[this.guesses.length - 1].isSolution()
     }
 }
 
@@ -9,21 +20,29 @@ class Guess {
     private letters: Letter[];
     constructor(guess: string, result: LetterState[]) {
         this.letters = [];
-        if(guess.length != 5) {
+        if (guess.length != 5) {
             throw new Error("Unexepcted guess length: ${guess.length}");
         }
-        if(result.length != 5) {
+        if (result.length != 5) {
             throw new Error("Unexepcted result length: ${result.length}");
         }
         result.forEach((element, index) => {
             this.letters.push(new Letter(guess.charAt(index), element));
         });
     }
+    public isSolution(): boolean {
+        for (let letter of this.letters) {
+            if (letter.state != LetterState.Correct) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 class Letter {
-    private letter: string;
-    private state: LetterState;
+    public letter: string;
+    public state: LetterState;
     constructor(letter: string, state: LetterState) {
         this.letter = letter;
         this.state = state;
@@ -38,7 +57,7 @@ export enum LetterState {
 }
 
 export function letterStateFromAttrString(attr: string): LetterState {
-    switch(attr) {
+    switch (attr) {
         case "correct":
             return LetterState.Correct;
         case "absent":
