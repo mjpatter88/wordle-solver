@@ -9,10 +9,16 @@ import { GamePage } from './game_page';
     const page = await browser.newPage();
     page.setViewport({ width: 1200, height: 1000 });
 
+    let gameState = new GameState();
     let gamePage = new GamePage(page);
     await gamePage.visit();
     await gamePage.startGame();
-    await gamePage.enterGuess(getNextGuess());
+
+    let guess = getNextGuess();
+    await gamePage.enterGuess(guess);
+    let result = await gamePage.getGuessResult();
+    gameState.addGuess(guess, result);
+    // TODO: start here. Read guess result in gamepage and then  build GamePlayer and Solver classes.
 
     let tileHandles = await page.$$('pierce/.tile');
     console.log(tileHandles.length)
@@ -20,21 +26,6 @@ import { GamePage } from './game_page';
 
 function getNextGuess(): string {
     return "tears";
-}
-
-class GameState {
-    private guesses: Guess[] = [];
-}
-
-class Guess {
-
-}
-
-enum LetterState {
-    Correct, // letter appears in solution in same position
-    Present, // letter appears in solution in different position
-    Absent, // letter does not appear in solution
-    TBD, // letter's state is not yet known
 }
 
 // References:

@@ -29,4 +29,8 @@ export class GamePage {
         await this.page.waitForTimeout(2000);
         console.log("complete");
     }
+
+    public async getGuessResult(): Promise<LetterState[]>{
+        throw new Error('Method not implemented.');
+    }
 }
