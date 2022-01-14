@@ -18,7 +18,7 @@ import { GamePage } from './game_page';
     await gamePage.enterGuess(guess);
     let result = await gamePage.getGuessResult();
     gameState.addGuess(guess, result);
-    // TODO: start here. Read guess result in gamepage and then  build GamePlayer and Solver classes.
+    // TODO: start here. Read guess result in gamepage and then build GamePlayer and Solver classes with core.ts containing pure functions for generating guesses, etc.
 
     let tileHandles = await page.$$('pierce/.tile');
     console.log(tileHandles.length)
