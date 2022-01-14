@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import { GamePage } from './game_page';
+import { GameState } from './game_state';
 
 (async () => {
     const browser = await puppeteer.launch({
@@ -16,12 +17,9 @@ import { GamePage } from './game_page';
 
     let guess = getNextGuess();
     await gamePage.enterGuess(guess);
-    let result = await gamePage.getGuessResult();
+    let result = await gamePage.getGuessResult(1);
     gameState.addGuess(guess, result);
-    // TODO: start here. Read guess result in gamepage and then build GamePlayer and Solver classes with core.ts containing pure functions for generating guesses, etc.
-
-    let tileHandles = await page.$$('pierce/.tile');
-    console.log(tileHandles.length)
+    // TODO: start here. Build GamePlayer and Solver classes, etc.
 })();
 
 function getNextGuess(): string {

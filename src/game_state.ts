@@ -1,4 +1,4 @@
-class GameState {
+export class GameState {
     private guesses: Guess[] = [];
     public addGuess(guess: string, result: LetterState[]) {
         this.guesses.push(new Guess(guess, result));
@@ -30,9 +30,22 @@ class Letter {
     }
 }
 
-enum LetterState {
+export enum LetterState {
     Correct, // letter appears in solution in same position
     Present, // letter appears in solution in different position
     Absent, // letter does not appear in solution
     TBD, // letter's state is not yet known
+}
+
+export function letterStateFromAttrString(attr: string): LetterState {
+    switch(attr) {
+        case "correct":
+            return LetterState.Correct;
+        case "absent":
+            return LetterState.Absent;
+        case "present":
+            return LetterState.Present;
+        default:
+            throw new Error("Illegal letter state attribute: {attr}");
+    }
 }
