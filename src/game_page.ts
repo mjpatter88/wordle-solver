@@ -31,7 +31,7 @@ export class GamePage {
         console.log("complete");
     }
 
-    // number is the guess number to analyze. Valid values are 1-6.
+    // number indicates which guess to analyze. Valid values are 1-6.
     public async getGuessResult(number: number): Promise<LetterState[]>{
         let result: LetterState[] = [];
         if(number > 6) {

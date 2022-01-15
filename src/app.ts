@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 import { GamePage } from './game_page';
-import { GameState } from './game_state';
+import { GamePlayer } from './game_player';
 
 (async () => {
     const browser = await puppeteer.launch({
@@ -10,21 +10,10 @@ import { GameState } from './game_state';
     const page = await browser.newPage();
     page.setViewport({ width: 1200, height: 1000 });
 
-    let gameState = new GameState();
     let gamePage = new GamePage(page);
-    await gamePage.visit();
-    await gamePage.startGame();
-
-    let guess = getNextGuess();
-    await gamePage.enterGuess(guess);
-    let result = await gamePage.getGuessResult(1);
-    gameState.addGuess(guess, result);
-    // TODO: start here. Build GamePlayer and Solver classes, etc.
+    let gamePlayer = new GamePlayer(gamePage);
+    await gamePlayer.play();
 })();
-
-function getNextGuess(): string {
-    return "tears";
-}
 
 // References:
 // https://www.powerlanguage.co.uk/wordle/
