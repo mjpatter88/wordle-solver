@@ -1,6 +1,7 @@
 # wordle-solver
 A puppeteer based bot that solves wordle in the browser.
 
+https://user-images.githubusercontent.com/1387682/149637334-b153cfd8-48b4-4e5a-8bb7-c6fd7411e068.mp4
 
 ## Approach
 Use a simple letter frequency-based guessing approach to narrow down the solution space.
