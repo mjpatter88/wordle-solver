@@ -2,7 +2,7 @@ import pathlib
 import heapq
 from collections import Counter
 
-ANSWER_LINE_START = "let answers = ["
+ANSWER_LINE_START = "export const answers = ["
 
 def get_current_file_location():
     return pathlib.Path(__file__).parent.resolve()

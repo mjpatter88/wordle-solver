@@ -9,10 +9,18 @@ export class GameState {
         if (this.guesses.length == 0) {
             return false;
         }
-        if (this.guesses.length == 6) {
+
+        if (this.guesses[this.guesses.length - 1].isSolution()) {
+            console.log("We won!");
             return true;
         }
-        return this.guesses[this.guesses.length - 1].isSolution()
+
+        if (this.guesses.length == 6) {
+            console.log("We lost :(");
+            return true;
+        }
+
+        return false;
     }
 }
 
@@ -21,10 +29,10 @@ class Guess {
     constructor(guess: string, result: LetterState[]) {
         this.letters = [];
         if (guess.length != 5) {
-            throw new Error("Unexepcted guess length: ${guess.length}");
+            throw new Error(`Unexepcted guess length: ${guess.length}`);
         }
         if (result.length != 5) {
-            throw new Error("Unexepcted result length: ${result.length}");
+            throw new Error(`Unexepcted result length: ${result.length}`);
         }
         result.forEach((element, index) => {
             this.letters.push(new Letter(guess.charAt(index), element));

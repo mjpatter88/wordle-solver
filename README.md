@@ -19,3 +19,6 @@ From most frequent to least: `e, a, r, o, t, l, i, s, n, c, u, y, d, h, p, m, g,
 
 Using this ordering, I then generated the list of 6 "best" words to guess in order to determine letter existence:
 `alert, scion, dumpy, bough, flack, vowel`
+
+## Future Optimizations
+1. The initial guess list should really be based on the full word list not just the solution list.
